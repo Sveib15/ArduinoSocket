@@ -8,7 +8,8 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     //variables
-    private Button btnKaffe;
+    private Button btnCoffee;
+    private Button btnPlus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,14 +17,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //initialization of button(s)
-        btnKaffe = (Button) findViewById(R.id.btnKaffe);
+        btnCoffee = (Button) findViewById(R.id.btnCoffee);
+        btnPlus = (Button) findViewById(R.id.btnPlus);
 
 
 
-
-        //ClickListener for the coffeebutton.
+        //ClickListener for the btnCoffee.
             //hardcoded. find solution for dynamic clicklistener creation (new for each connection)
-        View.OnClickListener listener = new View.OnClickListener() {
+        View.OnClickListener coffeeListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // the button was clicked, so activate the module.
@@ -33,8 +34,19 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+        View.OnClickListener plusListener = new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                // the button was clicked, so activate the module.
+                //opens new layout with fields to add a new module/appliance
+                    //try to make it usable.
+            }
+
+        };
+
 
         //button/listener overview.
-        btnKaffe.setOnClickListener(listener);
+        btnCoffee.setOnClickListener(coffeeListener);
+        btnPlus.setOnClickListener(plusListener);
     }
 }

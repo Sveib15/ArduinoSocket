@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private static Socket s;
     private static PrintWriter printWriter;
 
-    private static String ip = "192.168.0.24";
+    private static String ip = "my IP";
     String message = "";
 
     @Override

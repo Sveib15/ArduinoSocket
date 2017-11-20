@@ -1,12 +1,21 @@
+#include <ESP8266WiFi.h>
+
 int coffeePin = 8;
+const char* ssid ="MYSSID";
+const char* password = "MYPASS";
+WiFiServer server(5000);
+
+void printWiFiStatus();
+
 void setup() {
-  Serial.bein(xxx);
-  WiFi.begin(NETGEAR87, klkxygulac132);
+  Serial.begin(115200);
+  WiFi.begin(ssid,password);
   
   //Pin to relay
   pinMode(coffeePin, OUTPUT);
 
   server.begin();
+
   
 }
 
@@ -14,16 +23,15 @@ void loop() {
   // put your main code here, to run repeatedly:
    //tries to reconnect if connection is lost
    if(WiFi.status() != WL_CONNECTED) {
-    while(Wifi.status() != WL_CONNECTED) {
-      delay500;
+    while(WiFi.status() != WL_CONNECTED) {
+      delay(500);
     }
    printWiFiStatus();
    }
 
-WiFiClient client = server.available();
-
+  WiFiClient client = server.available();
   if(client) {
-    Serial.println("Client connected);
+    Serial.println("Client connected");
     while(client.connected()) {
       if(client.available()) {
         char command = client.read();
@@ -47,12 +55,12 @@ WiFiClient client = server.available();
   }
 
 
-
-
-
-
-
-
-
+}
+void printWiFiStatus(){
+  Serial.println("");
+  Serial.print("Connected to ");
+  Serial.println(ssid);
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());
 }
 
